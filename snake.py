@@ -91,7 +91,7 @@ class SpeedView(arcade.View):
             self.window.show_view(game_view)
 
         elif key == arcade.key.G:
-            self.game_speed = 0.15 #start with medium speed and increase as snake grows
+            self.game_speed = 0.15 #start with medium speed and increase as snake grows longer
             game_view = GameView(self.game_size, self.game_speed)
             self.window.show_view(game_view)
 
