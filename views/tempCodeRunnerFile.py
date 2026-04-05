@@ -1,0 +1,1 @@
+from views.high_score_view import HighScore
