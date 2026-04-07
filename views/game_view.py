@@ -10,7 +10,6 @@ class GameView(arcade.View):
         self.game_size = game_size
         #make the grass texture
         self.grass_texture = arcade.load_texture("assets/textures/grass03.png")
-
         self.grass_list = arcade.SpriteList()
         grass = arcade.Sprite()
         grass.texture = self.grass_texture
@@ -57,12 +56,13 @@ class GameView(arcade.View):
 
         #create food if it does not exist
         self.food_list = arcade.SpriteList()
-        self.food = create_food(self.food_list, self.game_size, self.snake_list)
+        self.food = create_food(self.food_list, self.game_size, self.snake_list, self.poison_list)
 
     #draw the play screen
     def on_draw(self):
         self.clear()
         self.grass_list.draw()
+        
         #make a border on the outside
         arcade.draw_lrbt_rectangle_outline(0, self.game_size, 0, self.game_size, arcade.color.WHITE, border_width=10)
         self.snake_list.draw()
@@ -115,15 +115,14 @@ class GameView(arcade.View):
                 self.snake_list.append(new_segment)
 
                 #create new food (from utils food.py)
-                self.food = create_food(self.food_list, self.game_size, self.snake_list)
+                self.food = create_food(self.food_list, self.game_size, self.snake_list, self.poison_list)
 
                 #add to the score
                 self.score += 1
                 self.score_text.text = f"Score: {self.score}"
 
                 if self.score %5 == 0:
-                    create_poison(self.poison_list, self.game_size, self.snake_list)
-
+                    create_poison(self.poison_list, self.game_size, self.snake_list, self.food_list)
 
                 #if in progressive mode, make each time you eat the snake moves faster
                 if self.progressive:

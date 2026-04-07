@@ -3,6 +3,8 @@ from utils.scores import draw_high_scores
 from views.game_view import GameView
 from views.menu_view import MenuView
 
+DEFAULT_WINDOW_SIZE = 600
+
 class GameOver(arcade.View):
     def __init__(self, score, game_size, game_speed, progressive):
         super().__init__()
@@ -46,6 +48,7 @@ class GameOver(arcade.View):
 
         #go back to menu to select new game size and speed
         elif key == arcade.key.M:
+            self.window.set_size(DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE)
             menu = MenuView()
             self.window.show_view(menu)
 
