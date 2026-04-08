@@ -3,6 +3,7 @@ import random
 from utils.food import create_food, create_poison
 from utils.scores import load_scores, update_scores
 
+
 class GameView(arcade.View):
     def __init__(self, game_size=600, game_speed=0.15, progressive=False):
         super().__init__()
@@ -48,6 +49,7 @@ class GameView(arcade.View):
         for i, position in enumerate(starting_positions):
             if i == 0:
                 segment = arcade.Sprite("assets/textures/snake_head.png", scale=.625)
+                segment.angle = 270
             else:
                 segment = arcade.Sprite("assets/textures/snake_body.png", scale=.625)
             segment.center_x = (self.game_size // 2) + position[0]
@@ -62,7 +64,7 @@ class GameView(arcade.View):
     def on_draw(self):
         self.clear()
         self.grass_list.draw()
-        
+
         #make a border on the outside
         arcade.draw_lrbt_rectangle_outline(0, self.game_size, 0, self.game_size, arcade.color.WHITE, border_width=10)
         self.snake_list.draw()
@@ -91,7 +93,7 @@ class GameView(arcade.View):
         self.move_timer += delta_time
 
         if self.move_timer >= self.move_delay:
-            self.move_timer = 0
+            self.move_timer -= self.move_delay
 
             for i in range(len(self.snake_list) - 1, 0, -1):
                 self.snake_list[i].center_x = self.snake_list[i-1].center_x
@@ -175,14 +177,19 @@ class GameView(arcade.View):
 
 #change snake direction
     def on_key_press(self, key, modifiers):
+        head = self.snake_list[0]
         if (key == arcade.key.UP or key == arcade.key.W) and self.direction != (0, -20):
             self.direction = (0, 20)
+            head.angle = 180
         elif (key == arcade.key.DOWN or key == arcade.key.S) and self.direction != (0, 20):
             self.direction = (0, -20)
+            head.angle = 0
         elif (key == arcade.key.LEFT or key == arcade.key.A) and self.direction != (20, 0):
             self.direction = (-20, 0)
+            head.angle = 90
         elif (key == arcade.key.RIGHT or key == arcade.key.D) and self.direction != (-20, 0):
             self.direction = (20, 0)
+            head.angle = 270
         elif key == arcade.key.P:
             self.paused = not self.paused
             return

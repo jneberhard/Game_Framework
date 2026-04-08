@@ -1,8 +1,5 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
-
-{Provide a description the game that you wrote. Describe how to play your game.}
 Snake Game
 Features:
 - Multiple board sizes
@@ -15,6 +12,7 @@ Features:
 Use your arrow keys to move the snake in the direction you want it to go.
 Your goal is to eat food. Each time you eat food, the snake will get longer.
 For a more challenging play, use Progressive Mode - the snake gets faster every time you eat food.
+Careful, poison will also appear. Game will end when you eat poison, run into a wall, or run into a part of the snake.
 
 I wrote this software to create a game better than the original snake game, with better graphics, sound, and in the future, upgrades to gameplay.
 
@@ -39,7 +37,7 @@ Import Random library (to be able to randomly place food)
 * [Dealing with Scores](https://www.youtube.com/watch?v=z3pdn54PnbM)
 * [Adding Sound](https://api.arcade.academy/en/3.3.2/programming_guide/sound.html)
 * [Adding Texture](https://api.arcade.academy/en/3.3.3/programming_guide/textures.html)
-
+* [Rotating Head](https://learn.arcade.academy/en/latest/chapters/22_moving_sprites/moving_sprites.html)
 
 
 # Future Work
@@ -50,3 +48,4 @@ Import Random library (to be able to randomly place food)
 * Multiple Food with different point values
 * Add randomized 'barriers'
 * Level up - as the snake gets to a certain length, go to a different level with obstacles (walls) created.  You level up when your snake gets a certain body length
+* Create it to play on mobile device or computer

@@ -1,17 +1,20 @@
 import random
 import arcade
 
+grid = 20
+border = 10
+
 def make_food(game_size, snake_list, poison_list):
     while True:
-        border = 10
-        grid = 20
         x = random.randint((border // grid)+1, (game_size - border) // grid - 1) * grid
         y = random.randint((border // grid)+1, (game_size - border) // grid - 1) * grid
 
-        if any(segment.center_x == segment.center_y ==y for segment in snake_list):
+        #avoid snake
+        if any(segment.center_x == x and segment.center_y == y for segment in snake_list):
             continue
 
-        if any(poison.center_x == poison.center_y ==y for poison in poison_list):
+        #avoid poison
+        if any(poison.center_x == x and  poison.center_y == y for poison in poison_list):
             continue
 
         return x, y
@@ -28,8 +31,6 @@ def create_food(food_list, game_size, snake_list, poison_list):
 
 def create_poison(poison_list, game_size, snake_list, food_list):
     while True:
-        border = 10
-        grid = 20
         x = random.randint((border // grid) + 1, (game_size - border) // grid - 1) * grid
         y = random.randint((border // grid) + 1, (game_size - border) // grid - 1) * grid
 
