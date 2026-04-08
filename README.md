@@ -16,10 +16,7 @@ Careful, poison will also appear. Game will end when you eat poison, run into a 
 
 I wrote this software to create a game better than the original snake game, with better graphics, sound, and in the future, upgrades to gameplay.
 
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the game being played and a walkthrough of the code.}
-
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/-I6x4pUBTtM)
 
 # Development Environment
 
